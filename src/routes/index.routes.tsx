@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Login from '../pages/login'
 import Register from '../pages/register'
 import HomePage from '../pages/Home'
+import BottomRoutes from './bottom.routes'
 
 export default function Routes(){
     const Stack = createStackNavigator()
@@ -23,7 +24,7 @@ export default function Routes(){
 
             <Stack.Screen 
                 name='Home'
-                component={HomePage}
+                component={BottomRoutes}
                 options={{ headerShown: false }}
             />
             

@@ -43,7 +43,6 @@ export default function Login() {
 
                 if (data.Acess) {
                     console.log('Login bem-sucedido');
-                    Alert.alert('Sucesso', 'Login realizado com sucesso!');
                     if (typeof data.AcessToken === 'string' && data.AcessToken.trim() !== '') {
                         await AsyncStorage.setItem('userToken', data.AcessToken);
                         navigation.navigate('Home');

@@ -40,7 +40,7 @@ export default StyleSheet.create({
     },
     button: {
         width: width * 0.8, // 80% da largura da tela
-        backgroundColor: '#007BFF',
+        backgroundColor: '#6200EE',
         paddingVertical: 12,
         borderRadius: 5,
         alignItems: 'center',

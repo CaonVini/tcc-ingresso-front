@@ -40,7 +40,6 @@ export default function Register() {
             console.log('Resposta da API:', data);
     
             if (response.status === 201) {
-                Alert.alert('Sucesso', 'Registro realizado com sucesso!');
                 navigation.reset({ routes: [{ name: 'Login' }] });
             } else {
                 Alert.alert('Erro', data.msgError || 'Erro desconhecido');
