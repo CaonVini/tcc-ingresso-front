@@ -36,9 +36,9 @@ export default function BottomRoutes() {
         tabBarInactiveTintColor: "gray",
         tabBarStyle: {
           backgroundColor: "#fff",
-          borderTopLeftRadius: 20, // Arredondar canto superior esquerdo
-          borderTopRightRadius: 20, // Arredondar canto superior direito
-          height: 70, // Aumentar a altura do tab bar
+          borderTopLeftRadius: 20, 
+          borderTopRightRadius: 20, 
+          height: 70, 
           elevation: 7,
           shadowColor: "#000",
           shadowOffset: { width: 0, height: -2 },

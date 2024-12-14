@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, Alert } fro
 import { MaterialIcons } from '@expo/vector-icons';
 import styles from './styles';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Adicione a importação do AsyncStorage
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -62,8 +62,8 @@ export default function Login() {
             Alert.alert('Erro', 'Ocorreu um erro ao tentar fazer login.');
         } finally {
             setLoading(false);
-            console.log('Carregando finalizado');
         }
+            console.log('Carregando finalizado');
     }
 
     return (

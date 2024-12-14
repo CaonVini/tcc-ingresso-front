@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, SafeAreaView, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useIsFocused } from '@react-navigation/native'; // Importação do hook para detecção de foco
+import { useIsFocused } from '@react-navigation/native'; 
 import styles from './styles';
 
 interface Event {
@@ -16,7 +16,7 @@ interface Event {
 
 const TicketScreen = () => {
   const [purchasedEvents, setPurchasedEvents] = useState<Event[]>([]);
-  const isFocused = useIsFocused(); // Hook para saber se a tela está em foco
+  const isFocused = useIsFocused(); 
 
   const fetchPurchasedEvents = async () => {
     try {
@@ -25,7 +25,6 @@ const TicketScreen = () => {
         throw new Error('Token de usuário não encontrado. Faça login novamente.');
       }
 
-      // Requisição para buscar os ticketIds comprados
       const response = await fetch('http://192.168.0.139:3000/list/event/user', {
         headers: { Authorization: `Bearer ${userToken}` },
       });
@@ -43,7 +42,7 @@ const TicketScreen = () => {
         return;
       }
 
-      // Requisição para buscar os eventos baseados nos ticketIds
+
       const eventsResponse = await fetch('http://192.168.0.139:3000/list/event', {
         headers: { Authorization: `Bearer ${userToken}` },
       });
@@ -65,7 +64,7 @@ const TicketScreen = () => {
 
   useEffect(() => {
     if (isFocused) {
-      fetchPurchasedEvents(); // Atualiza os ingressos sempre que a página ganha foco
+      fetchPurchasedEvents(); 
     }
   }, [isFocused]);
 

@@ -29,7 +29,7 @@ const HomeScreen = () => {
           throw new Error('Token de usuário não encontrado. Faça login novamente.');
         }
 
-        // Fetch user name
+
         const userResponse = await fetch('http://192.168.0.139:3000/me', {
           headers: { Authorization: `Bearer ${userToken}` },
         });
@@ -42,7 +42,7 @@ const HomeScreen = () => {
         const userData = await userResponse.json();
         setName(userData.user?.name || 'Usuário');
 
-        // Fetch events
+
         const eventsResponse = await fetch('http://192.168.0.139:3000/list/event', {
           headers: { Authorization: `Bearer ${userToken}` },
         });
@@ -54,9 +54,9 @@ const HomeScreen = () => {
 
         const eventsData = await eventsResponse.json();
         setEvents(eventsData);
-        setFilteredEvents(eventsData); // Inicia com todos os eventos
+        setFilteredEvents(eventsData); 
 
-        // Sync purchased events
+
         await syncPurchasedEvents(userToken);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -64,13 +64,11 @@ const HomeScreen = () => {
       }
     };
 
-    // Fetch data initially
     fetchData();
 
-    // Set up periodic fetching every 30 seconds (30000 milliseconds)
     const intervalId = setInterval(fetchData, 30000);
 
-    // Cleanup interval on component unmount
+
     return () => clearInterval(intervalId);
   }, []);
 
@@ -132,11 +130,9 @@ const HomeScreen = () => {
 
   const handleTagFilter = (tag: string) => {
     if (selectedTag === tag) {
-      // Remove filter if the same tag is clicked
       setSelectedTag(null);
       setFilteredEvents(events);
     } else {
-      // Apply new tag filter
       setSelectedTag(tag);
       const filtered = events.filter((event) => event.tags.toUpperCase().includes(tag));
       setFilteredEvents(filtered);
@@ -154,7 +150,6 @@ const HomeScreen = () => {
           <Text style={styles.eventName}>{item.eventName}</Text>
           <Text style={styles.eventDetails}>{formattedDate}</Text>
           <Text style={styles.eventDetails}>{formattedPrice}</Text>
-          {/* Display the location and tags */}
           <Text style={styles.eventDetails}>Local: {item.localEvent}</Text>
           <View style={styles.eventCardDetails}>
             <Text style={styles.eventTags}>{item.tags}</Text>

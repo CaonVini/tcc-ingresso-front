@@ -4,10 +4,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import styles from './styles';
 
-// Adicione a interface para as rotas
+
 type RootStackParamList = {
   Login: undefined;
-  // ... outras rotas se necessário
 };
 
 const ProfilePage: React.FC = () => {
@@ -25,7 +24,7 @@ const ProfilePage: React.FC = () => {
           throw new Error('Token de usuário não encontrado. Faça login novamente.');
         }
 
-        // Fetch para obter as informações do usuário
+
         const userResponse = await fetch('http://192.168.0.139:3000/me', {
           headers: { Authorization: `Bearer ${userToken}` },
         });
@@ -41,10 +40,8 @@ const ProfilePage: React.FC = () => {
           email: user.email,
         });
 
-        // Atualizar eventos imediatamente ao carregar
         await fetchEventCount(userToken);
 
-        // Configurar o timer para atualizar eventos a cada 10 segundos
         intervalId = setInterval(() => fetchEventCount(userToken), 10000);
       } catch (error) {
         console.error('Erro ao buscar dados do perfil:', error);
@@ -72,7 +69,7 @@ const ProfilePage: React.FC = () => {
 
     fetchUserData();
 
-    // Limpar o timer ao desmontar o componente
+
     return () => {
       if (intervalId) {
         clearInterval(intervalId);
@@ -93,7 +90,6 @@ const ProfilePage: React.FC = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        {/* Cabeçalho com a imagem de perfil */}
         <View style={styles.header}>
           <Image
             source={require('../../assets/profile-icon.jpg')}
@@ -103,13 +99,11 @@ const ProfilePage: React.FC = () => {
           <Text style={styles.email}>{userInfo.email}</Text>
         </View>
 
-        {/* Informações sobre a quantidade de eventos */}
         <View style={styles.eventContainer}>
           <Text style={styles.sectionTitle}>Ingressos Adquiridos:</Text>
           <Text style={styles.eventCount}>{eventCount > 0 ? eventCount : 'Nenhum evento ainda'}</Text>
         </View>
 
-        {/* Botão de logout */}
         <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
           <Text style={styles.logoutButtonText}>Sair</Text>
         </TouchableOpacity>
